@@ -33,14 +33,14 @@ Known Issues
 
 We're working hard to update to the new syncing protocol.
 
-In the mean time, we recommend you check out the offical sync server here:
+In the mean time, we recommend you check out the official sync server here:
 - [Documentation](https://docs.ankiweb.net/sync-server.html)
 - [Repository](https://github.com/ankitects/anki)
 - [WIP Docker Image](https://github.com/ankitects/anki/pull/2798#issuecomment-1812839066)
 
 Or reach out to see how you can help support our development [here](https://github.com/ankicommunity/anki-sync-server/issues/158).
 
-Thank you for your understanding. 
+Thank you for your understanding.
 
 ------------
 
@@ -52,7 +52,7 @@ Linux and macOS) which can sync to a web version (AnkiWeb) and mobile
 versions for Android and iOS.
 
 This is a personal Anki server, which you can sync against instead of
-AnkiWeb. 
+AnkiWeb.
 
 [Anki]: https://apps.ankiweb.net/
 
@@ -62,6 +62,7 @@ AnkiWeb.
  - [Installing](#installing)
  - [Installing (Docker)](#installing-docker)
  - [Setting up Anki](#setting-up-anki)
+    - [Anki 2.1.28 and above](#anki-2128-and-above)
     - [Anki 2.1](#anki-21)
     - [Anki 2.0](#anki-20)
     - [AnkiDroid](#ankidroid)
@@ -145,7 +146,7 @@ Setting up Anki
 
 2.there,you get add-on `custom sync server redirector`,choose it.Then click `config`  below right
 
-3.apply your server ip address 
+3.apply your server ip address
 
 if this step is taken,the following instructions regarding addon setting 2.1( including 2.1.28 and above) can be skipped.
 
@@ -156,7 +157,7 @@ like ankisyncd), create a file named `__init__.py` containing the code below
 and put it in the `ankisyncd` directory.
 
     import os
-    
+
     addr = "http://127.0.0.1:27701/" # put your server address here
     os.environ["SYNC_ENDPOINT"] = addr + "sync/"
     os.environ["SYNC_ENDPOINT_MEDIA"] = addr + "msync/"
@@ -168,7 +169,7 @@ like ankisyncd), create a file named `__init__.py` containing the code below
 and put it in the `ankisyncd` directory.
 
     import anki.sync, anki.hooks, aqt
-    
+
     addr = "http://127.0.0.1:27701/" # put your server address here
     anki.sync.SYNC_BASE = "%s" + addr
     def resetHostNum():
@@ -181,7 +182,7 @@ Create a file (name it something like ankisyncd.py) containing the code below
 and put it in `~/Anki/addons`.
 
     import anki.sync
-    
+
     addr = "http://127.0.0.1:27701/" # put your server address here
     anki.sync.SYNC_BASE = addr
     anki.sync.SYNC_MEDIA_BASE = addr + "msync/"
@@ -243,7 +244,7 @@ to the uppercase form of the configuration value. E.g. the environment variable,
 
 Environment variables override the values set in the `ankisyncd.conf`.
 
-* The environment variables can be found here: config/.env.example. 
+* The environment variables can be found here: config/.env.example.
 * The file also includes other development variables, but the notable ones are the ones with the prefix ANKISYNCD_
 * Environment variables will override the config files values (which is why I recommend you use them)
 * This is what we use in the Docker images (see: https://github.com/ankicommunity/anki-devops-services/blob/develop/services/anki-sync-server/examples/docker-compose.yml).
